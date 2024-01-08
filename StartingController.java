@@ -47,7 +47,11 @@ public class StartingController implements ActionListener{
                 break;
                 
             case "budget":
-                
+                BudgetView budgetView = new BudgetView();
+                budgetView.display();
+                BudgetModel budgetModel = new BudgetModel(budgetView);
+                BudgetController budgetController = new BudgetController(budgetView, budgetModel);
+                budgetModel.displayCalculations();
                 break;
                 
                 
