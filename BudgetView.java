@@ -9,6 +9,7 @@ package src;
  * @author alei
  */
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
@@ -39,6 +40,11 @@ public class BudgetView
     
      //Budget panel : displaying budget breakdown 
     private JPanel budgetPanel;
+    private JLabel necessitiesLabel = new JLabel("");
+    private JLabel spendingLabel = new JLabel("");
+    private JLabel foodLabel = new JLabel("");
+    private JLabel holidayLabel = new JLabel("");
+    private JLabel savingsLabel = new JLabel("");
     
     public BudgetView(){
         this.budgetFrame = new JFrame("budget");
@@ -51,7 +57,7 @@ public class BudgetView
         incomePanel.add(inputIncome);
         incomePanel.add(compute);
         
-        budgetFrame.add(incomePanel);
+        budgetFrame.add(incomePanel, BorderLayout.PAGE_START);
         budgetFrame.setBounds(frameWidth, frameHeight, frameWidth, frameHeight);
         budgetFrame.setLocationRelativeTo(null);
         budgetFrame.setVisible(true);
@@ -72,8 +78,46 @@ public class BudgetView
        return this.budgetPanel;
    }
    
-   public int getIncome()
+   public double getIncome()
    {
-       return Integer.parseInt(this.inputIncome.getText());
+       return Double.parseDouble(this.inputIncome.getText());
+   }
+   
+   public void setLabels(String necessities, String spending, String food, String holiday, String savings)
+   {
+       this.necessitiesLabel.setText("necessities: $" + necessities);
+       this.spendingLabel.setText("spending: $" + spending);
+       this.foodLabel.setText("food: $" + food);
+       this.holidayLabel.setText("holiday: $" + holiday);
+       this.savingsLabel.setText("savings: $" +savings);
+   }
+
+    public JLabel getIncomePrompt() {
+        return incomePrompt;
+    }
+
+    public JLabel getNecessitiesLabel() {
+        return necessitiesLabel;
+    }
+
+    public JLabel getSpendingLabel() {
+        return spendingLabel;
+    }
+
+    public JLabel getFoodLabel() {
+        return foodLabel;
+    }
+
+    public JLabel getHolidayLabel() {
+        return holidayLabel;
+    }
+
+    public JLabel getSavingsLabel() {
+        return savingsLabel;
+    }
+   
+   public JFrame getBudgetFrame()
+   {
+       return this.budgetFrame;
    }
 }

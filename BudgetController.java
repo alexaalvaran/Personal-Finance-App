@@ -4,10 +4,42 @@
  */
 package src;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alei
  */
-public class BudgetController {
+public class BudgetController implements ActionListener{
     
+    //Variables
+    private BudgetView view;
+    private BudgetModel model;
+    
+    public BudgetController(BudgetView view, BudgetModel model)
+    {
+        this.view = view;
+        this.model= model;
+        
+        view.addComputeListener(this);
+    }
+    
+    @Override 
+    public void actionPerformed(ActionEvent e)
+    {
+        String command = e.getActionCommand();
+        switch(command)
+        {
+            case "compute":
+                if(view.getIncome() != 0)
+                {
+                    model.setIncome(view.getIncome());
+                    view.setLabels(model.getNecessities(), model.getSpending(), model.getFood(), model.getHoliday(), model.getSavings());
+                    model.displayCalculations();
+                }
+                
+        }
+    }
 }
