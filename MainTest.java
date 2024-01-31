@@ -12,8 +12,8 @@ public class MainTest
 {
     
     public static void main(String[] args) {
-        StartingView startingView = new StartingView();
-        StartingController startingController = new StartingController(startingView);
+        MainMenuView startingView = new MainMenuView();
+        MainMenuController startingController = new MainMenuController(startingView);
         startingView.display();
     }
     

@@ -26,7 +26,7 @@ public class BudgetView
     private final Dimension screenSize = kit.getScreenSize();
     private final int screenWidth = screenSize.width;
     private final int screenHeight = screenSize.height;
-    private final int frameWidth = screenWidth/4;
+    private final int frameWidth = screenWidth/3;
     private final int frameHeight = screenHeight / 2;
     
     //Budget view variables 
@@ -46,6 +46,11 @@ public class BudgetView
     private JLabel holidayLabel = new JLabel("");
     private JLabel savingsLabel = new JLabel("");
     
+    
+    //Return button
+    private JButton returnMenu = new JButton("main menu");
+    private boolean mainMenu = false;
+    
     public BudgetView(){
         this.budgetFrame = new JFrame("budget");
         this.incomePanel = new JPanel();
@@ -56,6 +61,7 @@ public class BudgetView
         incomePanel.add(incomePrompt);
         incomePanel.add(inputIncome);
         incomePanel.add(compute);
+        incomePanel.add(returnMenu);
         
         budgetFrame.add(incomePanel, BorderLayout.PAGE_START);
         budgetFrame.setBounds(frameWidth, frameHeight, frameWidth, frameHeight);
@@ -71,6 +77,11 @@ public class BudgetView
     public void addComputeListener(ActionListener listener)
     {
         compute.addActionListener(listener);
+    }
+    
+    public void addReturnListener(ActionListener listener)
+    {
+        returnMenu.addActionListener(listener);
     }
     
    public JPanel getBudgetPanel()
@@ -120,4 +131,15 @@ public class BudgetView
    {
        return this.budgetFrame;
    }
+   
+   public void setMainMenu(boolean menu)
+   {
+       this.mainMenu = menu;
+   }
+   
+   public boolean getMainMenu()
+   {
+       return this.mainMenu;
+   }
 }
+
