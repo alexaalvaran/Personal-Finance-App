@@ -24,6 +24,7 @@ public class BudgetController implements ActionListener{
         this.model= model;
         
         view.addComputeListener(this);
+        view.addReturnListener(this);
     }
     
     @Override 
@@ -39,7 +40,15 @@ public class BudgetController implements ActionListener{
                     view.setLabels(model.getNecessities(), model.getSpending(), model.getFood(), model.getHoliday(), model.getSavings());
                     model.displayCalculations();
                 }
-                
+               break;
+               
+            case "main menu":
+                view.dispose();
+                MainMenuView mainMenuView = new MainMenuView();
+                MainMenuController mainMenuController = new MainMenuController(mainMenuView);
+                mainMenuView.display();
+
+
         }
     }
 }

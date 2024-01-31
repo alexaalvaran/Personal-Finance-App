@@ -24,14 +24,6 @@ public class BudgetModel {
     private double holiday;
     private double savings;
     
-//    private String necessitiesText;
-//    private String spendingText;
-//    private String foodText;
-//    private String holidayText;
-//    private String savingsText;
-//    
-    //JLabel variables 
-    
     public BudgetModel(BudgetView view)
     {
        this.view = view;
